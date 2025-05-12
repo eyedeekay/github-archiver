@@ -178,13 +178,23 @@ func (c *Client) CreateArchiveNamespace(ctx context.Context, namespace string) e
 
 // ForkRepository forks a repository to the archive namespace
 func (c *Client) ForkRepository(ctx context.Context, owner, repo, targetOrg string) error {
+	logger.Debug("Checking if %s/%s already exists", targetOrg, repo)
+
+	// Check if repository already exists in target org
+	_, _, err := c.client.Repositories.Get(ctx, targetOrg, repo)
+	if err == nil {
+		// Repository already exists in target org
+		logger.Info("Repository %s/%s already exists, skipping fork creation", targetOrg, repo)
+		return nil
+	}
+
 	logger.Debug("Forking %s/%s to %s", owner, repo, targetOrg)
 
 	forkOpts := &github.RepositoryCreateForkOptions{
 		Organization: targetOrg,
 	}
 
-	_, _, err := c.client.Repositories.CreateFork(ctx, owner, repo, forkOpts)
+	_, _, err = c.client.Repositories.CreateFork(ctx, owner, repo, forkOpts)
 	if util.ForceProcessing(err) {
 		logger.Error("Failed to fork %s/%s to %s: %v", owner, repo, targetOrg, err)
 		if err != nil {
