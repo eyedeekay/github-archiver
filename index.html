@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eyedeekay/github-archiver</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav-sidebar">
+    <div class="repo-info">
+      <h2>
+        <a href="index.html">eyedeekay/github-archiver</a>
+      </h2>
+      <div class="repo-meta">
+        📝 3 commits
+        
+      </div>
+    </div>
+    
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Repository Overview</a></li>
+      
+      
+    </ul>
+    
+    <div class="nav-footer">
+      <a href="https://github.com/eyedeekay/github-archiver" target="_blank">View on GitHub</a>
+    </div>
+  </nav>
+  
+  <div class="main-content">
+    <header class="repo-header">
+      <h1>eyedeekay/github-archiver</h1>
+      <div class="repo-description">A tool to identify and archive inactive GitHub repositories based on a configurable inactivity threshold.</div>
+      
+      <div class="repo-stats">
+        
+        <div class="repo-stat">
+          <span>📝</span> <span>3 commits</span>
+        </div>
+        
+        
+        <div class="repo-stat">
+          <span>📅</span> <span>Last updated: May 12, 2025</span>
+        </div>
+        
+        
+      </div>
+    </header>
+    
+    <main>
+      
+      <section id="readme" class="repo-section">
+        <h2>README</h2>
+        <div class="readme-content">
+          <h1 id="github-archiver">GitHub Archiver</h1>
+
+<p>A tool to identify and archive inactive GitHub repositories based on a configurable inactivity threshold.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>GitHub Archiver automates the process of analyzing repositories for inactivity and archiving them. It:</p>
+
+<ol>
+<li>Lists all repositories for a specified user or organization</li>
+<li>Analyzes repository activity to identify inactive ones</li>
+<li>Archives inactive repositories by:
+
+<ul>
+<li>Creating an archive namespace (if needed)</li>
+<li>Forking to the archive namespace</li>
+<li>Deleting the original repository</li>
+<li>Marking the forked repository as archived</li>
+</ul></li>
+</ol>
+
+<h2 id="installation">Installation</h2>
+
+<pre><code class="language-bash">go get github.com/eyedeekay/github-archiver
+</code></pre>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<ul>
+<li>Go 1.x</li>
+<li>github.com/google/go-github/v59</li>
+<li>golang.org/x/oauth2</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<pre><code class="language-bash">github-archiver --token YOUR_GITHUB_TOKEN --target USERNAME [options]
+</code></pre>
+
+<h3 id="options">Options</h3>
+
+<ul>
+<li><code>--token</code>: GitHub personal access token (required)</li>
+<li><code>--target</code>: GitHub username or organization (required)</li>
+<li><code>--dry-run</code>: Analyze repositories without making changes</li>
+<li><code>--org</code>: Specify if target is an organization (default: false)</li>
+<li><code>--threshold</code>: Inactivity threshold in years (default: 2)</li>
+<li><code>--verbose</code>: Enable verbose (debug) logging</li>
+<li><code>--quiet</code>: Show only warnings and errors</li>
+</ul>
+
+<h2 id="example">Example</h2>
+
+<p>To identify repositories inactive for 3+ years and perform archiving:</p>
+
+<pre><code class="language-bash">github-archiver --token ghp_xxxxxxxxxxxx --target myusername --threshold 3
+</code></pre>
+
+<p>For a dry run that only reports inactive repositories:</p>
+
+<pre><code class="language-bash">github-archiver --token ghp_xxxxxxxxxxxx --target myorg --org --dry-run
+</code></pre>
+
+<p>For detailed debug information:</p>
+
+<pre><code class="language-bash">github-archiver --token ghp_xxxxxxxxxxxx --target myusername --verbose
+</code></pre>
+
+<h2 id="core-components">Core Components</h2>
+
+<ul>
+<li><strong>Client</strong>: Wraps GitHub API functionality</li>
+<li><strong>Analyzer</strong>: Identifies inactive repositories based on the inactivity threshold</li>
+<li><strong>Archiver</strong>: Handles the repository archiving process</li>
+<li><strong>Logger</strong>: Provides structured logging with multiple severity levels</li>
+</ul>
+
+<p>The archive namespace requires manual creation for now.
+Create it as <code>{target}-archive</code> (e.g., <code>username-archive</code>).</p>
+
+        </div>
+      </section>
+      
+      
+      
+      <section id="contributors" class="repo-section">
+        <h2>Top Contributors</h2>
+        <div class="contributors-list">
+          
+          <div class="contributor-item">
+            <!-- Use first letter as avatar if no image available -->
+            <div class="contributor-avatar">
+              e
+            </div>
+            <div class="contributor-info">
+              <div class="contributor-name">
+                eyedeekay
+              </div>
+              <div class="contributor-commits">
+                3 commits
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <a href="https://github.com/eyedeekay/github-archiver/graphs/contributors" target="_blank">View all contributors on GitHub →</a>
+      </section>
+      
+    </main>
+    
+    <footer class="page-footer">
+      <p>Generated on 2025-05-13 01:53:33 • <a href="https://github.com/eyedeekay/github-archiver" target="_blank">View on GitHub</a></p>
+    </footer>
+  </div>
+</body>
+</html>
