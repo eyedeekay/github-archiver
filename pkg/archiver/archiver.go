@@ -42,7 +42,8 @@ func (a *Archiver) ArchiveRepository(ctx context.Context, owner, archiveNamespac
 	// 2. Fork the repository to the archive namespace
 	logger.Info("Forking %s/%s to %s...", owner, repo, archiveNamespace)
 	err = a.client.ForkRepository(ctx, owner, repo, archiveNamespace)
-	if util.ForceProcessing(err) {
+	// don't force continuation on error here.
+	if err != nil {
 		logger.Error("Failed to fork repository %s/%s: %v", owner, repo, err)
 		return fmt.Errorf("failed to fork repository: %w", err)
 	}
